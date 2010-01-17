@@ -1,0 +1,13 @@
+--- kde4/Makefile.template	2009-04-28 12:47:25.000000000 +0200
++++ kde4/Makefile.template.new	2010-01-17 22:16:47.504996585 +0100
+@@ -28,7 +28,7 @@
+ 	install --mode=644 *.desktop $(DEST)/share/applications/kde4
+ 	
+ 	#install docbook
+-	install -d $(DEST)/share/doc/kde4/HTML/en/backintime/figures
+-	install --mode=644 docbook/en/*.docbook $(DEST)/share/doc/kde4/HTML/en/backintime
+-	install --mode=644 docbook/en/figures/*.png $(DEST)/share/doc/kde4/HTML/en/backintime/figures
++	install -d $(DEST)/share/doc/kde/HTML/en/backintime/figures
++	install --mode=644 docbook/en/*.docbook $(DEST)/share/doc/kde/HTML/en/backintime
++	install --mode=644 docbook/en/figures/*.png $(DEST)/share/doc/kde/HTML/en/backintime/figures
+ 
