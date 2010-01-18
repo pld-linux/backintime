@@ -33,7 +33,6 @@ Linuksem, zainspirowane narzędziami "flyback project" i "TimeVault".
 Kopia jest wykonywana dla wskazanych katalogów. Aktualnie dostępne są
 dwie wersje GUI: GNOME i KDE 4 (>= 4.1).
 
-
 %package gnome
 Summary:	GNOME GUI for Back In Time
 Summary(pl.UTF-8):	GUI programu Back In Time przeznaczone dla środowiska GNOME
@@ -54,7 +53,6 @@ Back In Time to proste narzędzie do tworzenia kopii zapasowych pod
 Linuksem, zainspirowane narzędziami "flyback project" i "TimeVault".
 Kopia jest wykonywana dla wskazanych katalogów. Aktualnie dostępne są
 dwie wersje GUI: GNOME i KDE 4 (>= 4.1).
-
 
 %package kde4
 Summary:	KDE4 GUI for Back In Time
@@ -93,25 +91,26 @@ cd ../kde4
 
 %install
 rm -rf $RPM_BUILD_ROOT
-cd common
-%{__make} install \
+%{__make} -C common install \
 	PREFIX=%{_prefix} \
-	LIBDIR=/%{_lib} \
+	LIBDIR=%{_lib} \
 	DESTDIR=$RPM_BUILD_ROOT
 
-cd ../gnome
-%{__make} install \
+%{__make} -C gnome install \
 	PREFIX=%{_prefix} \
-	LIBDIR=/%{_lib} \
+	LIBDIR=%{_lib} \
 	DESTDIR=$RPM_BUILD_ROOT
 
-cd ../kde4
-%{__make} install \
+%{__make} -C kde4 install \
 	PREFIX=%{_prefix} \
-	LIBDIR=/%{_lib} \
+	LIBDIR=%{_lib} \
 	DESTDIR=$RPM_BUILD_ROOT
 
-cd ..
+rm -rf $RPM_BUILD_ROOT%{_docdir}/%{name}
+rm -f $RPM_BUILD_ROOT%{_docdir}/%{name}-common/copyright
+rm -f $RPM_BUILD_ROOT%{_docdir}/%{name}-gnome/copyright
+rm -f $RPM_BUILD_ROOT%{_docdir}/%{name}-kde4/copyright
+
 %find_lang %{name}
 
 %clean
