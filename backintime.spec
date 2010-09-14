@@ -4,7 +4,7 @@
 Summary:	Back In Time is a simple backup tool for Linux
 Summary(pl.UTF-8):	Back In Time to proste narzędzie do tworzenia kopii zapasowych pod Linuksem
 Name:		backintime
-Version:	0.9.26
+Version:	1.0
 Release:	1
 License:	v2/GPL
 Group:		Applications/Archiving
@@ -116,6 +116,7 @@ rm -f $RPM_BUILD_ROOT%{_docdir}/%{name}-kde4/copyright
 %clean
 rm -rf $RPM_BUILD_ROOT
 
+
 %files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc AUTHORS CHANGES LICENSE README TODO TRANSLATIONS VERSION common/debian_specific/copyright
@@ -124,7 +125,7 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_datadir}/backintime/common
 %{_datadir}/backintime/common/*
 %dir %{_datadir}/backintime/plugins
-%{_datadir}/backintime/plugins/usercallbackplugin.py
+%{_datadir}/backintime/plugins/*
 %{_mandir}/man1/backintime.1*
 
 %files gnome
