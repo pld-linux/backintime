@@ -4,12 +4,12 @@
 Summary:	Back In Time is a simple backup tool for Linux
 Summary(pl.UTF-8):	Back In Time to proste narzędzie do tworzenia kopii zapasowych pod Linuksem
 Name:		backintime
-Version:	1.0
+Version:	1.0.24
 Release:	1
 License:	v2/GPL
 Group:		Applications/Archiving
-Source0:	http://backintime.le-web.org/download/backintime/%{name}-%{version}_src.tar.gz
-Patch0:		%{name}_kde4_makefile.patch
+Source0:	http://backintime.le-web.org/wp-content/uploads/2009/03/%{name}-%{version}.tar.gz
+# Source0-md5:	7bb3a3ec192c12384a4fb2fb9b3e15b1
 URL:		http://backintime.le-web.org
 BuildRequires:	gettext-devel
 BuildRequires:	rpm-pythonprov
@@ -74,9 +74,7 @@ Kopia jest wykonywana dla wskazanych katalogów. Aktualnie dostępne są
 dwie wersje GUI: GNOME i KDE 4 (>= 4.1).
 
 %prep
-%setup -q
-# s/kde4/kde/
-%patch0 -p0
+%setup -q -c %{name}-%{version}
 
 %build
 cd common
@@ -110,6 +108,7 @@ rm -rf $RPM_BUILD_ROOT%{_docdir}/%{name}
 rm -f $RPM_BUILD_ROOT%{_docdir}/%{name}-common/copyright
 rm -f $RPM_BUILD_ROOT%{_docdir}/%{name}-gnome/copyright
 rm -f $RPM_BUILD_ROOT%{_docdir}/%{name}-kde4/copyright
+rm -rf $RPM_BUILD_ROOT%{_localedir}/jv
 
 %find_lang %{name}
 
@@ -121,12 +120,16 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc AUTHORS CHANGES LICENSE README TODO TRANSLATIONS VERSION common/debian_specific/copyright
 %attr(755,root,root) %{_bindir}/backintime
+%attr(755,root,root) %{_bindir}/backintime-askpass
 %dir %{_datadir}/backintime
 %dir %{_datadir}/backintime/common
 %{_datadir}/backintime/common/*
 %dir %{_datadir}/backintime/plugins
-%{_datadir}/backintime/plugins/*
+%{_datadir}/backintime/plugins/usercallbackplugin.py
+%{_datadir}/backintime/plugins/userscriptsplugin.py
 %{_mandir}/man1/backintime.1*
+/etc/xdg/autostart/backintime.desktop
+
 
 %files gnome
 %defattr(644,root,root,755)
@@ -149,3 +152,4 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_docdir}/kde/HTML/en/backintime
 %{_docdir}/kde/HTML/en/backintime/*
 %{_desktopdir}/kde4/backintime-kde4*.desktop
+%{_mandir}/man1/backintime-kde4.1*
