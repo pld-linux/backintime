@@ -11,7 +11,7 @@ Group:		Applications/Archiving
 Source0:	http://backintime.le-web.org/wp-content/uploads/2009/03/%{name}-%{version}.tar.gz
 # Source0-md5:	7bb3a3ec192c12384a4fb2fb9b3e15b1
 URL:		http://backintime.le-web.org
-BuildRequires:	gettext-devel
+BuildRequires:	gettext-tools
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.219
 BuildRequires:	which
